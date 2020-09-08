@@ -1,0 +1,8 @@
+          <PasswordField
+          style={{width: 250}}
+          placeholder={'Password'}
+          passwordValue={this.state.password}
+          backgroundColor={'white'}
+          textColor={'black'}
+          onChangeText={password=>this.setState({password: password})}
+          />

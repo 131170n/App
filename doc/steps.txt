@@ -1,0 +1,11 @@
+1. App.js
+1.1 If no login flag in local db (local var with default value false) - show login
+2. Login
+2.1 Show email + password fields
+2.2 show login button
+2.3 show link to signup - 'Dont have an account yet, signup here!' 
+2.4 If email is ori@thebittons.net and password is 12345678 - go to home else error messge
+3. show signup page
+3.1 Show email + password + verify password fields
+3.2 Link to "Already have an account, login!"
+4. Home - show "Welcome to whatIWore!"
