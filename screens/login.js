@@ -2,17 +2,32 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity, TextInput } from 'react-native';
 import SignUp from './signup'
 export default function Login() {
-
-  function onInputChange(text) {
+  const [password, setPassword] = useState('');
+  const [Email, setEmail] = useState('');
+  const [buttonClass, setButtonClass] = useState(styles.button);
+  function onInputChangePassword(text) {
+      setPassword(text);
   }
-
+  function onInputChange(text) {
+      setEmail(text);
+  }
+  function isAllowed() {
+      if (password!=='' && Email!=='') {
+          setButtonClass(styles.button);
+          return (true);
+      }
+      else {
+          setButtonClass(styles.buttonError);
+      }
+  }
   function myOnPressHome() {
-    alert('hi');
-    //isn't working... why? no idea...
+    if(isAllowed())
+    {
+      alert('go');
+    }
   };
   function myOnPressSignUp() {
     alert('hi1');
-    //isn't working... why? no idea...
   };
 
   return (
@@ -25,10 +40,10 @@ export default function Login() {
       <TextInput
         style={{ width: 250 }}
         placeholder="Password"
-        onChangeText={(text) => onInputChange(text)}
+        onChangeText={(text) => onInputChangePassword(text)}
       />
 
-      <TouchableOpacity style={styles.button} onPress={() => myOnPressHome()}>
+      <TouchableOpacity style={buttonClass} onPress={() => myOnPressHome()}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
@@ -50,6 +65,12 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 10,
   },
+  buttonError: {
+
+    backgroundColor: "red",
+    padding: 5,
+    borderRadius: 10,
+},
   buttonText: {
     fontSize: 10,
     color: '#fff',

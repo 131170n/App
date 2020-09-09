@@ -4,33 +4,30 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-nativ
 //import PasswordField from 'react-native-password-field';
 
 export default function SignUp() {
-    const [password, setPassword] = useState('empty');
-    const [Confirm, setConfirm] = useState('empty');
+    const [password, setPassword] = useState('');
+    const [Confirm, setConfirm] = useState('');
+    const [Email, setEmail] = useState('');
     const [buttonClass, setButtonClass] = useState(styles.button);
     function onInputChangePassword(text) {
         setPassword(text);
     }
-    function onInputChange(text){
-        
+    function onInputChange(text) {
+        setEmail(text);
     }
-    function onInputChangeConfirm(text){
+    function onInputChangeConfirm(text) {
         setConfirm(text);
     }
-    function isAllowed(){
-            if(Confirm===password)
-            {
-                setButtonClass(styles.button);
-                
-                return(true);
-            }
-            else
-            {
-                setButtonClass(styles.buttonError);
-            }
+    function isAllowed() {
+        if (Confirm === password && Email!=='') {
+            setButtonClass(styles.button);
+            return (true);
+        }
+        else {
+            setButtonClass(styles.buttonError);
+        }
     }
     function myOnPressHome() {
-        if(isAllowed())
-        {
+        if (isAllowed()) {
             alert('go');
         }
     };
@@ -79,7 +76,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     buttonError: {
-        
+
         backgroundColor: "red",
         padding: 5,
         borderRadius: 10,
