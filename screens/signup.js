@@ -3,29 +3,40 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 //import PasswordField from 'react-native-password-field';
 
-const [password, setPassword] = useState('');
-const [Confirm, setConfirm] = useState(false);
-
 export default function SignUp() {
+    const [password, setPassword] = useState('empty');
+    const [Confirm, setConfirm] = useState('empty');
 
     function onInputChangePassword(text) {
         setPassword(text);
-        setConfirm(true);
     }
     function onInputChange(text){
         
     }
     function onInputChangeConfirm(text){
-        if(password.valueOf()===text)
-        {
-            alert('error')
-        }
+        setConfirm(text);
+    }
+    function isAllowed(){
+            if(Confirm===password)
+            {
+                return(true);
+            }
+            else
+            {
+                alert('error please try again');
+            }
     }
     function myOnPressHome() {
-        alert('hi');
+        if(isAllowed())
+        {
+            alert('go');
+        }
     };
     function myOnPressLogin() {
-        alert('hi1');
+        if(isAllowed())
+        {
+            alert('go get them');
+        }
     };
 
     return (
