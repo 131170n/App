@@ -13,6 +13,7 @@ export default function SignUp() {
     }
     function onInputChange(text) {
         setEmail(text);
+        
     }
     function onInputChangeConfirm(text) {
         setConfirm(text);
