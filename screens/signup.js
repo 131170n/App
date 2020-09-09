@@ -6,7 +6,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-nativ
 export default function SignUp() {
     const [password, setPassword] = useState('empty');
     const [Confirm, setConfirm] = useState('empty');
-
+    const [buttonClass, setButtonClass] = useState(styles.button);
     function onInputChangePassword(text) {
         setPassword(text);
     }
@@ -19,11 +19,13 @@ export default function SignUp() {
     function isAllowed(){
             if(Confirm===password)
             {
+                setButtonClass(styles.button);
+                
                 return(true);
             }
             else
             {
-                alert('error please try again');
+                setButtonClass(styles.buttonError);
             }
     }
     function myOnPressHome() {
@@ -33,10 +35,7 @@ export default function SignUp() {
         }
     };
     function myOnPressLogin() {
-        if(isAllowed())
-        {
-            alert('go get them');
-        }
+        alert('go get them');
     };
 
     return (
@@ -57,7 +56,7 @@ export default function SignUp() {
                 placeholder="Confirm Password"
                 onChangeText={(text) => onInputChangeConfirm(text)}
             />
-            <TouchableOpacity style={styles.button} onPress={() => myOnPressHome()}>
+            <TouchableOpacity style={buttonClass} onPress={() => myOnPressHome()}>
                 <Text style={styles.buttonText}>SignUp</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => myOnPressLogin()}>
@@ -76,6 +75,12 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: "black",
+        padding: 5,
+        borderRadius: 10,
+    },
+    buttonError: {
+        
+        backgroundColor: "red",
         padding: 5,
         borderRadius: 10,
     },
