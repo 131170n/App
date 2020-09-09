@@ -3,18 +3,18 @@ import { StyleSheet, View, Image, Text, TouchableOpacity, TextInput } from 'reac
 import SignUp from './signup'
 export default function Login() {
 
-  const [user, setUser] = useState('Asher');
-
   function onInputChange(text) {
   }
 
-  function myOnPress() {
-    alert('hi1');
+  function myOnPressHome() {
     alert('hi');
-    setUser('Ori');
     //isn't working... why? no idea...
   };
-  
+  function myOnPressSignUp() {
+    alert('hi1');
+    //isn't working... why? no idea...
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -22,9 +22,18 @@ export default function Login() {
         placeholder="Email"
         onChangeText={(text) => onInputChange(text)}
       />
+      <TextInput
+        style={{ width: 250 }}
+        placeholder="Password"
+        onChangeText={(text) => onInputChange(text)}
+      />
 
-      <TouchableOpacity style={styles.button} onPress={() => myOnPress()}>
-  <Text style={styles.buttonText}>Don't have an account? Sign Up now {user} </Text>
+      <TouchableOpacity style={styles.button} onPress={() => myOnPressHome()}>
+        <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => myOnPressSignUp()}>
+        <Text style={styles.buttonText}>Don't have an account? Sign Up now</Text>
       </TouchableOpacity>
     </View>
   );
@@ -44,5 +53,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 10,
     color: '#fff',
+    
   },
 });

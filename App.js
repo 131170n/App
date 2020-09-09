@@ -3,17 +3,16 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import SignUp from './screens/signup';
 import Login from './screens/login';
-let loginT=false;
+import Home from './screens/home';
+
+
 export default function App() {
   
-  if(loginT === false){
     return (
       <View style={styles.container}>
-        <Login></Login>
+        <SignUp/>
       </View>
     );
-  }
-  
 }
 
 const styles = StyleSheet.create({
@@ -25,11 +24,11 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "black",
-    padding: 20,
+    padding: 5,
     borderRadius: 5,
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: 15,
     color: '#fff',
   },
 });
