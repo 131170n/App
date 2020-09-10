@@ -1,34 +1,43 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Image, Text, TouchableOpacity, TextInput } from 'react-native';
-import SignUp from './signup'
-export default function Login() {
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import 'react-native-gesture-handler';
+export default function Login({ navigation }) {
   const [password, setPassword] = useState('');
   const [Email, setEmail] = useState('');
   const [buttonClass, setButtonClass] = useState(styles.button);
   function onInputChangePassword(text) {
-      setPassword(text);
+    setPassword(text);
   }
   function onInputChange(text) {
-      setEmail(text);
+    setEmail(text);
   }
   function isAllowed() {
-      if (password!=='' && Email!=='') {
-          setButtonClass(styles.button);
-          return (true);
-      }
-      else {
-          setButtonClass(styles.buttonError);
-      }
+    if (password !== '' && Email !== '') {
+      setButtonClass(styles.button);
+      return (true);
+    }
+    else {
+      setButtonClass(styles.buttonError);
+    }
   }
   function myOnPressHome() {
-    if(isAllowed())
-    {
-      alert('go');
+    if (isAllowed()) {
+      HomeScreen()
     }
   };
   function myOnPressSignUp() {
-    alert('hi1');
+    SignUpScreen()
   };
+  const SignUpScreen = () => {
+    return (
+      navigation.navigate('SignUp', { name: 'SignUp' })
+    );
+  }
+  const HomeScreen = () => {
+    return (
+      navigation.navigate('Home', { name: 'Home' })
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -70,10 +79,10 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     padding: 5,
     borderRadius: 10,
-},
+  },
   buttonText: {
     fontSize: 10,
     color: '#fff',
-    
+
   },
 });

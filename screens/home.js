@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     buttonText: {
-        fontSize: 5,
+        fontSize: 10,
         color: '#fff',
     },
 });

@@ -1,9 +1,10 @@
-
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
-//import PasswordField from 'react-native-password-field';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function SignUp() {
+export default function SignUp(navigation) {
     const [password, setPassword] = useState('');
     const [Confirm, setConfirm] = useState('');
     const [Email, setEmail] = useState('');
@@ -13,13 +14,13 @@ export default function SignUp() {
     }
     function onInputChange(text) {
         setEmail(text);
-        
+
     }
     function onInputChangeConfirm(text) {
         setConfirm(text);
     }
     function isAllowed() {
-        if (Confirm === password && Email!=='') {
+        if (Confirm === password && Email !== '') {
             setButtonClass(styles.button);
             return (true);
         }
@@ -29,12 +30,22 @@ export default function SignUp() {
     }
     function myOnPressHome() {
         if (isAllowed()) {
-            alert('go');
+            HomeScreen()
         }
     };
     function myOnPressLogin() {
-        alert('go get them');
+        LoginScreen()
     };
+    const LoginScreen = () => {
+        return (
+            navigation.navigate('Login', { name: 'Login' })
+        );
+    }
+    const HomeScreen = () => {
+        return (
+            navigation.navigate('Home', { name: 'Home' })
+        );
+    }
 
     return (
         <View style={styles.container}>

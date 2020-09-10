@@ -1,18 +1,38 @@
 // @ts-nocheck
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import SignUp from './screens/signup';
+import { StyleSheet } from 'react-native';
+import 'react-native-gesture-handler';
+import { createStackNavigator } from '@react-navigation/stack';
 import Login from './screens/login';
+import SignUp from './screens/signup';
 import Home from './screens/home';
-
+import { View } from 'antd-mobile';
+const Stack = createStackNavigator();
 
 export default function App() {
-  
+  const MyStack = () => {
     return (
-      <View style={styles.container}>
-        <Login/>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+          name="Login"
+          component={Login}
+          />
+          <Stack.Screen
+          name="SignUp"
+          component={SignUp}/>
+          <Stack.Screen
+          name="Home"
+          component={Home}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+  
     );
+  }
+  return(
+    MyStack()
+  );
 }
 
 const styles = StyleSheet.create({
