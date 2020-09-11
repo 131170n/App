@@ -2,15 +2,15 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
 
-export default function App() {
+export default function App({ navigation }) {
     function myOnPressWeardrobe() {
-
+        navigation.navigate('Weardrobe', {name: 'Weardrobe'})
     }
     function myOnPressMatch() {
-
+        navigation.navigate('matchClothes', {name: 'matchClothes'})
     }
     function myOnPressAdd() {
-
+        navigation.navigate('addClothes', {name: 'addClothes'})
     }
 
     return (
