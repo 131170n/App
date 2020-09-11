@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
-export default function SignUp(navigation) {
+export default function SignUp({ navigation }) {
+    
     const [password, setPassword] = useState('');
     const [Confirm, setConfirm] = useState('');
     const [Email, setEmail] = useState('');
     const [buttonClass, setButtonClass] = useState(styles.button);
+    
     function onInputChangePassword(text) {
         setPassword(text);
     }
@@ -38,18 +38,17 @@ export default function SignUp(navigation) {
     };
     const LoginScreen = () => {
         return (
-            navigation.navigate('Login', { name: 'Login' })
-        );
+            navigation.navigate('Login', {name: 'Login'})
+        )
     }
     const HomeScreen = () => {
         return (
-            navigation.navigate('Home', { name: 'Home' })
-        );
+            navigation.navigate('Home', {name: 'Home'})
+        )
     }
 
     return (
         <View style={styles.container}>
-            <Text>hello</Text>
             <TextInput
                 style={{ width: 250 }}
                 placeholder="Email"

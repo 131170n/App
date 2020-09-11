@@ -8,6 +8,7 @@ import Login from './screens/login';
 import SignUp from './screens/signup';
 import Home from './screens/home';
 import { View } from 'antd-mobile';
+import Temp from './screens/temp';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -15,13 +16,12 @@ export default function App() {
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-          name="Login"
-          component={Login}
-          />
-          <Stack.Screen
+        <Stack.Screen
           name="SignUp"
           component={SignUp}/>
+          <Stack.Screen
+          name="Login"
+          component={Login}/>
           <Stack.Screen
           name="Home"
           component={Home}/>
