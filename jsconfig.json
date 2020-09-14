@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
       "jsx": "react",
-      "checkJs": true      
+      "checkJs": true,
+      "lib": [ "es2015" ],      
     }
   }
