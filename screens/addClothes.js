@@ -2,17 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, CameraRoll, RefreshControl, StyleSheet } from 'react-native';
 import { Camera } from 'expo-camera';
 
-export default function addClothes() {
+export default function addClothes({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [myRef, setMyRef] = useState(null);
   const takePicture = () => {
-    console.log('reach');
-      console.log('reach1');
       myRef.takePictureAsync({ onPictureSaved: onPictureSaved });
   };
   const onPictureSaved = photo => {
     console.log(photo);
+    Confirm()
+  }
+  const Confirm = () => {
+    return (
+      navigation.navigate('Confirm', { name: 'Confirm'})
+    );
   }
   useEffect(() => {
     (async () => {
@@ -74,6 +78,5 @@ const styles = StyleSheet.create({
   buttonText: {
       fontSize: 15,
       color: '#fff',
-
   },
 });

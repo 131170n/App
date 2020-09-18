@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
 
-export default function App({ navigation }) {
+export default function Home({ navigation }) {
     function myOnPressWeardrobe() {
         navigation.navigate('Weardrobe', {name: 'Weardrobe'})
     }
