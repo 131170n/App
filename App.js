@@ -39,7 +39,8 @@ export default function App() {
             component={Add} />
           <Stack.Screen
             name="Confirm"
-            component={Confirm} />
+            component={Confirm}
+            initialParams={{ uri: '' }} />
         </Stack.Navigator>
       </NavigationContainer>
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, CameraRoll, RefreshControl, StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Camera } from 'expo-camera';
 
-export default function addClothes({ navigation }) {
+export default function AddClothes({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [myRef, setMyRef] = useState(null);
@@ -10,12 +10,12 @@ export default function addClothes({ navigation }) {
       myRef.takePictureAsync({ onPictureSaved: onPictureSaved });
   };
   const onPictureSaved = photo => {
-    console.log(photo);
-    Confirm()
+    console.log(photo.uri);
+    confirm(photo.uri)
   }
-  const Confirm = () => {
+  const confirm = (uri) => {
     return (
-      navigation.navigate('Confirm', { name: 'Confirm'})
+      navigation.navigate('Confirm', { name: 'Confirm', pictureUri: uri})
     );
   }
   useEffect(() => {

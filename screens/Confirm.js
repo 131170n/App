@@ -1,13 +1,15 @@
-import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import 'react-native-gesture-handler';
-import { createStackNavigator } from '@react-navigation/stack';
-import ImagePreview from 'react-native-image-preview';
-const Stack = createStackNavigator();
-let visible = true;
-export default function App(photo, { navigation }) {
 
+import React from 'react';
+import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import 'react-native-gesture-handler';
+export default function Confirm({ route, navigation }) {
+    const { pictureUri } = route.params;
+    function MyOnPressC() {
+        MyOnPressConfirm();
+    }
+    function MyOnPressD() {
+        MyOnPressDecline();
+    }
     const MyOnPressConfirm = () => {
         return (
             navigation.navigate('Weardrobe', { name: 'Weardrobe' })
@@ -18,14 +20,17 @@ export default function App(photo, { navigation }) {
             navigation.navigate('addClothes', { name: 'addClothes' })
         );
     }
+    console.log("The photo Uri:" + pictureUri);
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={() => MyOnPressConfirm()}>
-                <Text style={styles.buttonText}>Confirm?</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => MyOnPressDecline()}>
-                <Text style={styles.buttonText}>Retake</Text>
-            </TouchableOpacity>
+            <ImageBackground source={{uri: pictureUri}} style={styles.backgroundImage}>
+                <TouchableOpacity style={styles.button} onPress={() => MyOnPressC()}>
+                    <Text style={styles.buttonText}>Confirm?</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => MyOnPressD()}>
+                    <Text style={styles.buttonText}>Retake</Text>
+                </TouchableOpacity>
+            </ImageBackground>
         </View>
     );
 
@@ -37,7 +42,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        //<ImagePreview visible={visible} source={{uri: 'photo'}} />
     },
     button: {
         backgroundColor: "black",
@@ -47,5 +51,10 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 15,
         color: '#fff',
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: 'cover', // or 'stretch'
+        justifyContent: "flex-end"
     },
 });
