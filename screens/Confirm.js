@@ -12,7 +12,8 @@ export default function Confirm({ route, navigation }) {
     }
     const MyOnPressConfirm = () => {
         return (
-            navigation.navigate('Weardrobe', { name: 'Weardrobe' })
+            //navigation.navigate('Weardrobe', { name: 'Weardrobe' })
+            navigation.navigate('Test', { name: 'Test' })
         );
     }
     const MyOnPressDecline = () => {

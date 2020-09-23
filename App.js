@@ -12,6 +12,7 @@ import Weadrobe from './screens/weadrobe';
 import Match from './screens/matchClothes';
 import Add from './screens/addClothes';
 import Confirm from './screens/Confirm';
+import Test from './screens/test';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -41,6 +42,9 @@ export default function App() {
             name="Confirm"
             component={Confirm}
             initialParams={{ uri: '' }} />
+            <Stack.Screen
+            name="Test"
+            component={Test}/>
         </Stack.Navigator>
       </NavigationContainer>
 

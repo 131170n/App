@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Camera } from 'expo-camera';
+import { picDir, ensureDirExists } from '../components/directory';
+import * as FileSystem from 'expo-file-system';
+import moment from 'moment';
 
 export default function AddClothes({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [myRef, setMyRef] = useState(null);
+
   const takePicture = () => {
+    ensureDirExists();
       myRef.takePictureAsync({ onPictureSaved: onPictureSaved });
   };
+
+  const options = {
+    from: "",
+    to: "",
+  }
   const onPictureSaved = photo => {
+    options.from=`${photo.uri}`;
     console.log(photo.uri);
-    confirm(photo.uri)
+    var nameImage=`${moment().format("DDMMYY_HHmmSSS")}.jpg`;
+    options.to=`${picDir}/${nameImage}`;
+    console.log(picDir);
+    FileSystem.moveAsync(options);
+    confirm(options.to);
   }
   const confirm = (uri) => {
     return (
