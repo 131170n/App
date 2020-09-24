@@ -4,23 +4,34 @@ import 'react-native-gesture-handler';
 import * as FileSystem from 'expo-file-system';
 import { picDir } from '../components/directory';
 export default function Test() {
-  const [currently, setCurrent] = useState(0);
+  const [currently, setCurrently] = useState(0);
   const [sources, setSources] = useState([])
   function MyOnNext() {
-    setCurrent(currently+1);
+    if(currently.valueOf() > sources.length )
+    {
+      setCurrently(0);
+    }
+    else
+    {
+      setCurrently(currently+1)
+    }
+    console.log(currently);
   }
   useEffect(() => {
     (async () => {
+      setCurrently(0);
       setSources(await FileSystem.readDirectoryAsync(picDir));
+      console.log(sources);
     })();
   }, []);
   return (
     <View style={styles.container}>
-      <ImageBackground source={{ uri: sources[currently] }} style={styles.backgroundImage}>
-        <TouchableOpacity style={styles.button} onPress={() => MyOnNext()}>
-          <Text style={styles.buttonText}>Confirm?</Text>
-        </TouchableOpacity>
-      </ImageBackground>
+      <Image
+        style={{ width: 100, height: 100 }}
+        source={{uri: `${picDir}/${sources[currently]}`}} />
+      <TouchableOpacity style={styles.button} onPress={() => MyOnNext()}>
+        <Text style={styles.buttonText}>Confirm?</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -48,8 +59,8 @@ const styles = StyleSheet.create({
 
   },
   backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover', // or 'stretch'
-    justifyContent: "flex-end"
+    height: 360,
+    width: 300,
+    justifyContent: "flex-end",
   },
 });
