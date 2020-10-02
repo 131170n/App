@@ -13,7 +13,7 @@ export default function Confirm({ route, navigation }) {
     const MyOnPressConfirm = () => {
         return (
             //navigation.navigate('Weardrobe', { name: 'Weardrobe' })
-            navigation.navigate('Test', { name: 'Test' })
+            navigation.navigate('Home', { name: 'Home' })
         );
     }
     const MyOnPressDecline = () => {
@@ -24,14 +24,21 @@ export default function Confirm({ route, navigation }) {
     console.log("The photo Uri:" + pictureUri);
     return (
         <View style={styles.container}>
-            <ImageBackground source={{uri: pictureUri}} style={styles.backgroundImage}>
+            <Image source={{ uri: `${pictureUri}` }} style={styles.backgroundImage} />
+            {/* <ImageBackground source={{uri: pictureUri}} style={styles.backgroundImage}>
                 <TouchableOpacity style={styles.button} onPress={() => MyOnPressC()}>
                     <Text style={styles.buttonText}>Confirm?</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={() => MyOnPressD()}>
                     <Text style={styles.buttonText}>Retake</Text>
                 </TouchableOpacity>
-            </ImageBackground>
+            </ImageBackground> */}
+            <TouchableOpacity style={styles.button} onPress={() => MyOnPressC()}>
+                <Text style={styles.buttonText}>Confirm?</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => MyOnPressD()}>
+                <Text style={styles.buttonText}>Retake</Text>
+            </TouchableOpacity>
         </View>
     );
 
@@ -55,7 +62,9 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         flex: 1,
+        height: 360,
+        width: 500,
         resizeMode: 'cover', // or 'stretch'
-        justifyContent: "flex-end"
+        justifyContent: 'center',
     },
 });

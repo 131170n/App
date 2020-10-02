@@ -27,7 +27,7 @@ export default function Test() {
   return (
     <View style={styles.container}>
       <Image
-        style={{ width: 100, height: 100 }}
+        style={styles.backgroundImage}
         source={{uri: `${picDir}/${sources[currently]}`}} />
       <TouchableOpacity style={styles.button} onPress={() => MyOnNext()}>
         <Text style={styles.buttonText}>Confirm?</Text>
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   buttonError: {
-
     backgroundColor: "red",
     padding: 5,
     borderRadius: 10,
@@ -60,7 +59,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     height: 360,
-    width: 300,
+    width: 500,
     justifyContent: "flex-end",
   },
 });
