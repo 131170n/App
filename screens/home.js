@@ -13,9 +13,11 @@ export default function Home({ navigation }) {
     const [currently, setCurrently] = useState(0);
     useEffect(() => {
         (async () => {
-            setSources(await FileSystem.readDirectoryAsync(picDir));
-            setCurrently(sources.length - 1);
-            console.log(sources);
+            console.log("this is picDir "+ picDir);
+            const tmp = await FileSystem.readDirectoryAsync(picDir);
+            setSources(tmp);
+            setCurrently(tmp.length - 1);
+            console.log("this is sources "+ tmp);
         })();
     }, []);
     function myOnPressWeardrobe() {
