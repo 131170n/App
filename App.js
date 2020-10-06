@@ -28,7 +28,8 @@ export default function App() {
             component={Login} />
           <Stack.Screen
             name="Home"
-            component={Home} />
+            component={Home} 
+            initialParams={{ update: null}} />
           <Stack.Screen
             name="Weardrobe"
             component={Weadrobe} />
@@ -37,7 +38,8 @@ export default function App() {
             component={Match} />
           <Stack.Screen
             name="addClothes"
-            component={Add} />
+            component={Add} 
+            initialParams={{ update: false}} />
           <Stack.Screen
             name="Confirm"
             component={Confirm}

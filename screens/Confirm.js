@@ -2,6 +2,7 @@
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import 'react-native-gesture-handler';
+import { AntDesign } from '@expo/vector-icons'; 
 export default function Confirm({ route, navigation }) {
     const { pictureUri } = route.params;
     function MyOnPressC() {
@@ -13,7 +14,7 @@ export default function Confirm({ route, navigation }) {
     const MyOnPressConfirm = () => {
         return (
             //navigation.navigate('Weardrobe', { name: 'Weardrobe' })
-            navigation.navigate('Home', { name: 'Home' })
+            navigation.navigate('Home', { name: 'Home', params: true})
         );
     }
     const MyOnPressDecline = () => {
@@ -24,7 +25,10 @@ export default function Confirm({ route, navigation }) {
     console.log("The photo Uri:" + pictureUri);
     return (
         <View style={styles.container}>
-            <Image source={{ uri: `${pictureUri}` }} style={styles.backgroundImage} />
+            <ImageBackground source={{ uri: `${pictureUri}` }} style={styles.backgroundImage} >
+                <AntDesign name="checksquareo" size={24} color="white" onPress={() => MyOnPressC()} />
+                <AntDesign name="minussquareo" size={24} color="white" onPress={() => MyOnPressD()} />
+            </ImageBackground>
             {/* <ImageBackground source={{uri: pictureUri}} style={styles.backgroundImage}>
                 <TouchableOpacity style={styles.button} onPress={() => MyOnPressC()}>
                     <Text style={styles.buttonText}>Confirm?</Text>
@@ -33,12 +37,6 @@ export default function Confirm({ route, navigation }) {
                     <Text style={styles.buttonText}>Retake</Text>
                 </TouchableOpacity>
             </ImageBackground> */}
-            <TouchableOpacity style={styles.button} onPress={() => MyOnPressC()}>
-                <Text style={styles.buttonText}>Confirm?</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => MyOnPressD()}>
-                <Text style={styles.buttonText}>Retake</Text>
-            </TouchableOpacity>
         </View>
     );
 
@@ -62,9 +60,11 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         flex: 1,
-        height: 360,
-        width: 500,
+        height: '100%',
+        width: '100%',
         resizeMode: 'cover', // or 'stretch'
-        justifyContent: 'center',
+        flexDirection: "row", 
+        alignItems: "flex-end", 
+        justifyContent: "space-around",
     },
 });

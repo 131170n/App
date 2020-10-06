@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import 'react-native-gesture-handler';
+import { Feather } from '@expo/vector-icons'; 
 export default function Login({ navigation }) {
 
     const HomeScreen = () => {
@@ -11,9 +12,7 @@ export default function Login({ navigation }) {
     return (
         <View style={styles.container}>
             <Text>Match Clothes page</Text>
-            <TouchableOpacity style={styles.button} onPress={() => HomeScreen()}>
-                <Text style={styles.buttonText}>Back to Home</Text>
-            </TouchableOpacity>
+            <Feather name="home" style={{marginBottom: 15}} size={24} color="black" onPress={() => HomeScreen()}/>
         </View>
     );
 }

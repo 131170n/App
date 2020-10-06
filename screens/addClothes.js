@@ -22,7 +22,7 @@ export default function AddClothes({ navigation }) {
   const onPictureSaved = photo => {
     options.from=`${photo.uri}`;
     console.log(photo.uri);
-    var nameImage=`${moment().format("DDMMYY_HHmmSSS")}.jpg`;
+    var nameImage=`${moment().format("YYMMDD_HHmmSSS")}.jpg`;
     options.to=`${picDir}/${nameImage}`;
     console.log(picDir);
     FileSystem.moveAsync(options);
