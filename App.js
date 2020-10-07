@@ -29,7 +29,7 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={Home} 
-            initialParams={{ update: null}} />
+            initialParams={{ shouldRefresh: true}} />
           <Stack.Screen
             name="Weardrobe"
             component={Weadrobe} />
@@ -38,12 +38,11 @@ export default function App() {
             component={Match} />
           <Stack.Screen
             name="addClothes"
-            component={Add} 
-            initialParams={{ update: false}} />
+            component={Add}  />
           <Stack.Screen
             name="Confirm"
             component={Confirm}
-            initialParams={{ uri: '' }} />
+            initialParams={{ uri: ''}} />
             <Stack.Screen
             name="Test"
             component={Test}/>

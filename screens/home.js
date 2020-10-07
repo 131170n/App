@@ -7,21 +7,26 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import ImageSlider from 'react-native-image-slider';
 import { TextInput } from 'react-native-gesture-handler';
+import { and } from 'react-native-reanimated';
+import { updateLocale } from 'moment';
+// import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
-export default function Home({ navigation, route}) {
+export default function Home({ navigation, route }) {
     const [sources, setSources] = useState([])
     const [currently, setCurrently] = useState(0);
-    const { update }=route.params
+    let shouldRefresh = route.params.shouldRefresh;
+    console.log("this is from the route: " + route.params.shouldRefresh + " and we got: " + shouldRefresh)
     useEffect(() => {
         (async () => {
-            console.log("this is picDir "+ picDir);
+            console.log("this are the params 1: " + shouldRefresh);
+            console.log("this is picDir " + picDir);
             const tmp = await FileSystem.readDirectoryAsync(picDir);
             setSources(tmp.sort());
             setCurrently(tmp.length - 1);
-            console.log("this is sources "+ tmp);
-            
+            console.log("this is sources " + tmp);
+            console.log("this is from the route 2: " + route.params.shouldRefresh + " and we got: " + shouldRefresh)
         })();
-    }, update);
+    }, [shouldRefresh]);
     function myOnPressWeardrobe() {
         navigation.navigate('Weardrobe', { name: 'Weardrobe' })
     }
@@ -29,7 +34,7 @@ export default function Home({ navigation, route}) {
         navigation.navigate('matchClothes', { name: 'matchClothes' })
     }
     function myOnPressAdd() {
-        navigation.navigate('addClothes', { name: 'addClothes', params: update })
+        navigation.navigate('addClothes', { name: 'addClothes', shouldRefresh: shouldRefresh })
     }
     return (
         // flexDirection:"row", alignItems:"flex-end", justifyContent:"space-around"

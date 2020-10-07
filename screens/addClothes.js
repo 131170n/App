@@ -5,11 +5,12 @@ import { picDir, ensureDirExists } from '../components/directory';
 import * as FileSystem from 'expo-file-system';
 import moment from 'moment';
 
-export default function AddClothes({ navigation }) {
+export default function AddClothes({ route, navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [myRef, setMyRef] = useState(null);
-
+  const shouldRefresh = route.params.shouldRefresh;
+  console.log("this is shouldRefresh in addClothes: "+shouldRefresh);
   const takePicture = () => {
     ensureDirExists();
       myRef.takePictureAsync({ onPictureSaved: onPictureSaved });
@@ -29,8 +30,10 @@ export default function AddClothes({ navigation }) {
     confirm(options.to);
   }
   const confirm = (uri) => {
+    console.log(shouldRefresh)
     return (
-      navigation.navigate('Confirm', { name: 'Confirm', pictureUri: uri})
+      navigation.navigate('Confirm', { name: 'Confirm', pictureUri: uri, shouldRefresh: shouldRefresh })
+
     );
   }
   useEffect(() => {

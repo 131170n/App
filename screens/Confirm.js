@@ -3,8 +3,10 @@ import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons'; 
+import { updateLocale } from 'moment';
 export default function Confirm({ route, navigation }) {
     const { pictureUri } = route.params;
+    const shouldRefresh = route.params.shouldRefresh;
     function MyOnPressC() {
         MyOnPressConfirm();
     }
@@ -14,7 +16,7 @@ export default function Confirm({ route, navigation }) {
     const MyOnPressConfirm = () => {
         return (
             //navigation.navigate('Weardrobe', { name: 'Weardrobe' })
-            navigation.navigate('Home', { name: 'Home', params: true})
+            navigation.navigate('Home', { name: 'Home', shouldRefresh: !shouldRefresh})
         );
     }
     const MyOnPressDecline = () => {
