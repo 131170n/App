@@ -29,7 +29,7 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={Home} 
-            initialParams={{ shouldRefresh: true}} />
+            initialParams={{ shouldRefresh: true }} />
           <Stack.Screen
             name="Weardrobe"
             component={Weadrobe} />
